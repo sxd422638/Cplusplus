@@ -1,6 +1,7 @@
-#include<iostream>
-#include<string>
-using namespace std;
+//#include<iostream>
+//#include<string>
+//#include<assert.h>
+//using namespace std;
 
 
 //int main()
@@ -218,7 +219,7 @@ using namespace std;
 //}
 
 // 深浅拷贝
-//namespace bit
+//namespace hdzc
 //{ 
 //	// 字符数组
 //	// 实现一个简单的string类
@@ -323,6 +324,8 @@ using namespace std;
 
 
 #include <iostream>
+#include<stdio.h>
+#include<stdlib.h>
 #include <assert.h>
 using namespace std;
 
@@ -451,7 +454,16 @@ namespace hdzc
 		{
 			// 增容
 			if (_size == _capacity)
-				reserve(_capacity * 2);
+			{
+				if (_capacity == 0)
+				{
+					reserve(2);
+				}
+				else
+				{
+					reserve(_capacity * 2);
+				}
+			}
 
 			_str[_size] = ch;
 			++_size;
@@ -483,22 +495,116 @@ namespace hdzc
 			return *this;
 		}
 
-		void insert(size_t pos, char ch);
-		void insert(size_t pos, const char* str);
-		void erase(size_t pos, size_t len = npos);
-		size_t find(char ch);
-		size_t find(const char* str);
+		string& insert(size_t pos, char ch)
+		{
+			assert(pos < _size);
+			if (_size == _capacity)
+			{
+				reserve(_capacity * 2);
+			}
+
+			size_t end = _size;
+			while (end >= pos)
+			{
+				_str[end + 1] = _str[end];
+				--end;
+			}
+
+			_str[pos] = ch;
+			++_size;
+
+			return *this;
+		}
+
+		string& insert(size_t pos, const char* str)
+		{
+			assert(pos < _size);
+			size_t len = strlen(str);
+			if (_size + len > _capacity)
+			{
+				reserve(_size + len);
+			}
+
+			size_t end = _size;
+			while (end >= pos)
+			{
+				_str[end + len] = _str[end];
+				--end;
+			}
+
+			strncpy(_str + pos, str, len);
+			_size += len;
+
+			return *this;
+		}
+
+		void erase(size_t pos, size_t len = npos)
+		{
+			assert(pos < _size);
+
+			if (_size - pos <= len)
+			{
+				_str[pos] = '\0';
+				_size = pos;
+			}
+			else
+			{
+				strcpy(_str + pos, _str + pos + len);
+				_size -= len;
+			}
+		}
+
+		size_t find(char ch, size_t pos = 0)
+		{
+			for (size_t i = pos; i < _size; ++i)
+			{
+				if (_str[i] == ch)
+					return i;
+			}
+
+			return npos;
+		}
+
+		size_t find(const char* str, size_t pos = 0)
+		{
+			const char* p = strstr(_str + pos, str);
+			if (p == nullptr)
+				return npos;
+			else
+				return p - _str;
+		}
 
 		// s1 < s2
-		
-		bool operator<(const string& s);
-		bool operator==(const string& s);
+		// 实现这两个，其他的比较复用实现
+		bool operator<(const string& s)
+		{
+			return strcmp(_str, s._str) < 0;
+		}
 
-		bool operator<=(const string& s);
-		bool operator>(const string& s);
-		bool operator>=(const string& s);
-		bool operator!=(const string& s);
+		bool operator==(const string& s)
+		{
+			return strcmp(_str, s._str) == 0;
+		}
 
+		bool operator<=(const string& s)
+		{
+			return *this < s || *this == s;
+		}
+
+		bool operator>(const string& s)
+		{
+			return !(*this <= s);
+		}
+
+		bool operator>=(const string& s)
+		{
+			return !(*this < s);
+		}
+
+		bool operator!=(const string& s)
+		{
+			return !(*this == s);
+		}
 	private:
 		char* _str;
 		size_t _size;
@@ -519,11 +625,22 @@ namespace hdzc
 		return out;
 	}
 
-	istream& operator >> (istream& in, string& s);
+	istream& operator >> (istream& in, string& s)
+	{
+		while (1)
+		{
+			char ch = in.get();
+			if (ch == ' ' || ch == '\n')
+				break;
+			else
+				s += ch;
+		}
 
+		return in;
+	}
 }
 
-int main()
+void test_string1()
 {
 	hdzc::string s1("hello");
 	s1.push_back('x');
@@ -564,11 +681,37 @@ int main()
 	s2.resize(3);
 	s2.resize(7, 'x');
 	s2.resize(15, 'x');
+}
+
+void test_string2()
+{
+	hdzc::string s1("hello");
+	s1.insert(2, 'e');
+	cout << s1 << endl;
+
+	s1.insert(2, "world");
+	cout << s1 << endl;
+
+	hdzc::string s2("hello world wrold");
+	cout << s2 << endl;
+	s2.erase(5, 6);
+	cout << s2 << endl;
+
+	//s2.erase(5);
+	s2.erase(5, 10);
+	cout << s2 << endl;
+
+	hdzc::string s;
+	cin >> s;
+	cout << s << endl;
+}
+
+int main()
+{
+	test_string2();
 
 	return 0;
 }
-
-
 
 
 

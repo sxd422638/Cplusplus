@@ -1,9 +1,20 @@
 ﻿  test.cpp
-e:\vs2015代码\c++代码\03string类\03string类\test.cpp(143): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(355): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
-e:\vs2015代码\c++代码\03string类\03string类\test.cpp(149): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(370): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
-e:\vs2015代码\c++代码\03string类\03string类\test.cpp(158): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(387): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
-  03string类.vcxproj -> E:\VS2015代码\C++代码\03string类\Debug\03string类.exe
-  03string类.vcxproj -> E:\VS2015代码\C++代码\03string类\Debug\03string类.pdb (Full PDB)
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(424): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(471): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(510): error C3867: “hdzc::string::size”: 非标准语法；请使用 "&" 来创建指向成员的指针
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(510): error C2446: “<”: 没有从“size_t (__thiscall hdzc::string::* )(void) const”到“std::size_t”的转换
+  e:\vs2015代码\c++代码\03string类\03string类\test.cpp(510): note: 没有使该转换得以执行的上下文
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(520): warning C4146: 一元负运算符应用于无符号类型，结果仍为无符号类型
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(520): warning C4552: “-”: 运算符不起任何作用；应输入带副作用的运算符
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(522): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: 参见“strncpy”的声明
+e:\vs2015代码\c++代码\03string类\03string类\test.cpp(536): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 参见“strcpy”的声明
