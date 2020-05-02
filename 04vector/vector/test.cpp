@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 void test_vector1()
@@ -20,6 +21,7 @@ void test_vector2()//ÕıÏòµü´úÆ÷
 	v1.push_back(2);
 	v1.push_back(3);
 	v1.push_back(4);
+	 //v1.pop_back();
 	//3ÖÖ±éÀú·½Ê½
 	//1.ÏñÊı×éÒ»ÑùÈ¥Ê¹ÓÃ
 	for (size_t i = 0; i < v1.size(); ++i)
@@ -29,21 +31,21 @@ void test_vector2()//ÕıÏòµü´úÆ÷
 	}
 	cout << endl;
 	//2.µü´úÆ÷
-	vector<int>::iterator it = v1.begin();
-	while (it != v1.end())
-	{
-		*it *= 2;
-		cout << *it << " ";
-		++it;
-	}
-	cout << endl;
-	//3.·¶Î§for½øĞĞ±éÀú
-	for (auto& e : v1)
-	{
-		e *= 2;
-		cout << e << " ";
-	}
-	cout << endl;
+	//vector<int>::iterator it = v1.begin();
+	//while (it != v1.end())
+	//{
+	//	*it *= 2;
+	//	cout << *it << " ";
+	//	++it;
+	//}
+	//cout << endl;
+	////3.·¶Î§for½øĞĞ±éÀú
+	//for (auto& e : v1)
+	//{
+	//	e *= 2;
+	//	cout << e << " ";
+	//}
+	//cout << endl;
 
 
 }
@@ -52,14 +54,14 @@ void test_vector3()//·´Ïòµü´úÆ÷
 
 {
 
-	vector<int> v1;
-	v1.push_back(1);
-	v1.push_back(2);
-	v1.push_back(3);
-	v1.push_back(4);
-
-	vector<int>::reverse_iterator rit = v1.rbegin();
-	while (rit != v1.rend())
+	vector<int> v2;
+	v2.push_back(1);
+	v2.push_back(2);
+	v2.push_back(3);
+	v2.push_back(4);
+	
+	vector<int>::reverse_iterator rit = v2.rbegin();
+	while (rit != v2.rend())
 	{
 		*rit *= 2;
 		cout << *rit << " ";
@@ -78,7 +80,7 @@ void Print(const vector<int>& v)//const°æ±¾ÎªÖ»¶Á°æ±¾ ¿ÉÒÔÓÃÔÚ´òÓ¡ÖĞ ÊÇ²»¿ÉÒÔĞŞ¸
 	cout << endl;
 }
 
-void test_vector4()//ÔöÈİ vsÏÂÊÇ1.5µÄÔöÈİ
+void test_vector4()//ÔöÈİ vsÏÂÊÇ1.5µÄÔöÈİ g++ÊÇ2±¶ÔöÈİ
 
 {
 	size_t sz;
@@ -94,6 +96,28 @@ void test_vector4()//ÔöÈİ vsÏÂÊÇ1.5µÄÔöÈİ
 	}
 }
 
+void test_vector5() //vectorµÄÔöÉ¾²é¸Ä
+{
+	vector<int> v1;
+	v1.push_back(1);
+	v1.push_back(2);
+	v1.push_back(3);
+	v1.push_back(4);
+	v1.insert(v1.begin(), 0);//begin()±íÊ¾µÚÒ»¸öÎ»ÖÃ£¬begin()+1±íÊ¾µÚ¶şÎ»ÖÃ ºóÃæ±íÊ¾Òª²åÈëµÄÖµ
+	v1.erase(v1.begin());    //É¾³ıÄ³¸öÎ»ÖÃµÄÖµ O(N)
+	
+	vector<int>::iterator pos1 = find(v1.begin(), v1.end(), 3);//ÕÒµ½Ò»¸öÊı ²¢ÔÚËûµÄÇ°Ãæ²åÈëÖµ
+	if (pos1 != v1.end())
+	{
+		v1.insert(pos1, 30);
+	}																	 
+	//·¶Î§for½øĞĞ±éÀú
+	for (auto& e : v1)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+}
 
 
 
@@ -104,6 +128,7 @@ int main()
 	//test_vector1();
 	//test_vector2();
 	//test_vector3();
-	test_vector4();
+	//test_vector4();
+	test_vector5();
 	return 0;
 }
