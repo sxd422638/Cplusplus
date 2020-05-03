@@ -105,8 +105,8 @@ void test_vector5() //vector的增删查改
 	v1.push_back(4);
 	v1.insert(v1.begin(), 0);//begin()表示第一个位置，begin()+1表示第二位置 后面表示要插入的值
 	v1.erase(v1.begin());    //删除某个位置的值 O(N)
-	
-	vector<int>::iterator pos1 = find(v1.begin(), v1.end(), 3);//找到一个数 并在他的前面插入值
+	//sort(v1.begin(), v1.end());//排序 里面给一个迭代区间
+	auto/*vector<int>::iterator*/ pos1 = find(v1.begin(), v1.end(), 3);//找到一个数 并在他的前面插入值
 	if (pos1 != v1.end())
 	{
 		v1.insert(pos1, 30);
