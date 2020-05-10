@@ -186,6 +186,9 @@
 #include"vector.h"
 int main()
 {
+	hdzc::test_vector1();
+	hdzc::test_vector2();
+	hdzc::test_vector3();
 	hdzc::test_vector4();
 
 	return 0;
