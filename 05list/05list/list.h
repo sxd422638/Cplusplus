@@ -111,8 +111,40 @@ namespace hdzc
 			_head->_prev = _head;
 		}
 
-		list(const list<int>& lt);
-		list<T>& operator=(const list<int>& lt);
+		// list<int> lt2(lt1)
+		list(const list<int>& lt)
+		{
+			_head = new node;
+			_head->_next = _head;
+			_head->_prev = _head;
+
+			for (auto e : lt)
+				push_back(e);
+		}
+
+		// lt1 = lt3;
+		/*	list<T>& operator=(const list<int>& lt)
+		{
+		if (this != &lt)
+		{
+		clear();
+		for (auto e : lt)
+		{
+		push_back(e);
+		}
+		}
+
+		return *this;
+		}
+		*/
+		// lt1 = lt3
+		list<T>& operator=(list<int> lt)
+		{
+			swap(_head, lt._head);
+
+			return *this;
+		}
+
 
 		~list()
 		{
@@ -140,20 +172,59 @@ namespace hdzc
 
 		void push_back(const T& x)
 		{
-			node* newnode = new node(x);
-			node* tail = _head->_prev;//找尾从头就可以找到
+			/*node* newnode = new node(x);
+			node* tail = _head->_prev;
 
 			tail->_next = newnode;
 			newnode->_prev = tail;
 			newnode->_next = _head;
-			_head->_prev = newnode;
+			_head->_prev = newnode;*/
+
+			insert(end(), x);//因为在双向循环链表end的位置在head 所以在end前面插入即为尾插
 		}
 
-		void pop_back();
-		void push_front(const T& x);
-		void pop_front();
-		void insert(iterator pos, const T& x);
-		void erase(iterator pos);
+		void pop_back()//尾删 先--找到最后一个位置 再erase
+		{
+			erase(--end());
+		}
+
+		void push_front(const T& x)//在begin前面插入
+		{
+			insert(begin(), x);
+		}
+
+		void pop_front()//删除begin位置上的数
+		{
+			erase(begin());
+		}
+
+		void insert(iterator pos, const T& x)//在pos前的位置插入一个值 定义为newnode
+		{
+			node* cur = pos._node;//直接可以访问当前的node
+			node* prev = cur->_prev;
+			node* newnode = new node(x);
+
+			// prev newnode cur 把3个结点连接起来
+			prev->_next = newnode;
+			newnode->_prev = prev;
+			newnode->_next = cur;
+			cur->_prev = newnode;
+		}
+
+		iterator erase(iterator pos)
+		{
+			assert(pos != end());//不能删除头结点
+
+			node* del = pos._node;//要删除的结点
+			node* prev = del->_prev;
+			node* next = del->_next;
+
+			prev->_next = next;
+			next->_prev = prev;
+			delete del;
+
+			return iterator(next);//返回删除这个地方下一个位置的迭代器 否则迭代器会失效
+		}
 	private:
 		node* _head;
 	};
