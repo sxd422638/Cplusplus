@@ -104,7 +104,7 @@ namespace hdzc
 			return const_iterator(_head);
 		}
 
-		list()
+		list()//构造函数
 		{
 			_head = new node;
 			_head->_next = _head;
@@ -112,20 +112,20 @@ namespace hdzc
 		}
 
 		// list<int> lt2(lt1)
-		list(const list<int>& lt)
+		list(const list<int>& lt)//拷贝构造
 		{
-			_head = new node;
+			_head = new node;//先找出头结点 并让它自己指向自己 此时没有数据
 			_head->_next = _head;
 			_head->_prev = _head;
 
-			for (auto e : lt)
+			for (auto e : lt)//往lt2里面遍历lt1
 				push_back(e);
 		}
 
-		// lt1 = lt3;
-		/*	list<T>& operator=(const list<int>& lt)
+		// lt1 = lt3; operator=
+		/*	list<T>& operator=(const list<int>& lt) //方法一
 		{
-		if (this != &lt)
+		if (this != &lt)//lt1去调clear  lt相当于lt3
 		{
 		clear();
 		for (auto e : lt)
@@ -138,9 +138,9 @@ namespace hdzc
 		}
 		*/
 		// lt1 = lt3
-		list<T>& operator=(list<int> lt)
+		list<T>& operator=(list<int> lt)//方法二  现代写法
 		{
-			swap(_head, lt._head);
+			swap(_head, lt._head);//深拷贝 交换 lt1的head和lt3的交换 出作用域后lt3进行析构
 
 			return *this;
 		}
