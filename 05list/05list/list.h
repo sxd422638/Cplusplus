@@ -299,9 +299,7 @@ namespace hdzc
 		lt.push_back(2);
 		lt.push_back(3);
 		lt.push_back(4);
-
 		PrintList(lt);
-
 		lt.clear();
 		PrintList(lt);
 	}
