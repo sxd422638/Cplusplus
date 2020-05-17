@@ -39,7 +39,7 @@ void test_queue()
 	cout << endl;
 }
 
-// 适配器
+// 容器适配器 完成转换的一个过程
 // 模拟实现一个栈
 namespace hdzc
 {
@@ -119,7 +119,8 @@ namespace hdzc
 		cout << endl;
 	}
 
-	// 结合图了解框架设计
+	// 结合图了解框架设计 双端队列deque
+		
 	template<class T>
 	struct __deque_iterator
 	{
@@ -155,6 +156,17 @@ namespace hdzc
 			return cur != it.cur;
 		}
 	};
+	/*deque同时具备vector和list的特点
+	vector的缺点：增容+不支持头插头删 优点：随机访问
+	list的缺点：不支持随机访问 优点：头尾中间都支持插入删除
+	deque插入数据不存在增容的问题,也支持随机访问，也支持头尾的插入和删除
+	看起来deque很厉害,同时具备了vector和list的优点 好像他的产生可以代替vector和list
+	但实际中deque在库中作为stack和queue的适配容器存在，实际中的使用很少
+	cur指向数组中当前的位置
+	first指向数据的开始
+	last指向数组的结束
+	node方向指向中控的指针数据
+	*/
 
 	template<class T>
 	class deque
@@ -172,7 +184,7 @@ namespace hdzc
 		}
 		// 头尾的插入效率都不错
 
-		// 败笔：随机访问
+		
 		T& operator[](size_t i)
 		{
 			// ...
