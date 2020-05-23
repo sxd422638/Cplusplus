@@ -707,12 +707,6 @@ void test_string2()
 	cout << s << endl;
 }
 
-int main()
-{
-	test_string2();
-
-	return 0;
-}
 
 
 
