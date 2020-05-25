@@ -108,7 +108,7 @@ using namespace std;
 //int main()
 //{
 //	// 为什么内置类型不需要我们重载<< >> 运算符？   库里面已经实现了内置类型重载实现
-//	// 为什么他可以自动识别类型？                   函数重载
+//	// 为什么可以自动识别类型                   函数重载
 //	/*int i;
 //	double d;
 //	cin >> i;
@@ -157,8 +157,7 @@ public:
 		ifs.read((char*)&info, sizeof(ServerInfo));
 	}
 
-	// 文本读写  转成字符串写出去。（优点：写出去方便读了，缺点：比较麻烦） 
-	/* 传统的写法，转字符串写出，读字符串再转成要的类型对象  这个过程序列化和反序列化
+	
 	void WriteText(const ServerInfo& info)
 	{
 	ofstream ofs(_configfile.c_str());
@@ -175,7 +174,7 @@ public:
 	char ipstr[10];
 	ifs.getline(ipstr, 10);
 	info._port = stoi(ipstr);
-	}*/
+	}
 
 	void WriteText(const ServerInfo& info)
 	{
