@@ -491,7 +491,7 @@ void PrintVFTable(V_FUNC* p)
 	{
 		printf("vtable[%d]:%p->", i, p[i]);
 		V_FUNC f = p[i];
-		f();
+		f() ;
 	}
 }
 
@@ -499,6 +499,5 @@ int main()
 {
 	Derive d;
 	Derive* ptr = &d;
-	//PrintVFTable((V_FUNC*)(*(int*)ptr));
 	PrintVFTable((V_FUNC*)ptr);
 }
