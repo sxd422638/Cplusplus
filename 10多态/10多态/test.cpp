@@ -628,8 +628,6 @@ void PrintVFTable(VF_PTR* table)
 //	return 0;
 //}
 
-#include<iostream>
-using namespace std;
 //class A{
 //public:
 //	A(char *s) { cout << s << endl; }
