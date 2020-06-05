@@ -127,7 +127,7 @@
 //	////迭代器失效是因为reserve使it失效了 解决方法：将reserve放在it之前
 //	////会影响迭代器失效的操作
 //	////reserve/resize
-//	////insert/push_back/erase 能增容 开空间的都不可以
+//	////insert/push_back/erase  能增容 开空间的都不可以
 //	//while (it != v.end())
 //	//{
 //	//	cout << *it << " ";
