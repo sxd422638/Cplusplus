@@ -21,7 +21,7 @@ class BSTree
 {
 	typedef BSTreeNode<K> Node;
 public:
-	// 1.非递归（循环）插入
+	// 1.非递归插入
 	bool Insert(const K& key) 
 	{
 		if (_root == nullptr)
