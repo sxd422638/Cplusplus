@@ -209,17 +209,59 @@ public:
 
 
 
-	void RotateLR(Node* parent)//×óÓÒË«Ðý ÏÈ×óµ¥Ðý ÔÙÓÒµ¥Ðý
+	void RotateLR(Node* parent)//×óÓÒË«Ðý ÏÈ×óµ¥Ðý ÔÙÓÒµ¥Ðý ¸ù¾ÝÍ¼À´·ÖÎö
 	{
 		RotateL(parent->_left);
 		RotateR(parent);
+		if (bf == 1)
+		{
+			parent->_bf = 0;
+			subL->_bf = -1;
+			subLR->_bf = 0;
+		}
+		else if (bf == -1)
+		{
+			parent->_bf = 1;
+			subL->_bf = 0;
+			subLR->_bf = 0;
+		}
+		else if (bf == 0)
+		{
+			parent->_bf = 0;
+			subL->_bf = 0;
+			subLR->_bf = 0;
+		}
 	}
 
 	void RotateRL(Node* parent)//ÓÒ×óË«Ðý ÏÈÓÒµ¥Ðý ÔÙ×óµ¥Ðý
 	{
 		RotateR(parent->_right);
 		RotateL(parent);
+
+		if (bf == -1)
+		{
+			parent->_bf = 0;
+			subR->_bf = 1;
+			subRL->_bf = 0;
+		}
+		else if (bf == 1)
+		{
+			parent->_bf = -1;
+			subR->_bf = 0;
+			subRL->_bf = 0;
+		}
+		else if (bf == 0)
+		{
+			parent->_bf = 0;
+			subR->_bf = 0;
+			subRL->_bf = 0;
+		}
 	}
+	
+
+
+
+
 
 
 	void _InOrder(Node* root)
