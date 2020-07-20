@@ -562,7 +562,7 @@ int main()
 	};
 	sort(gds, gds + sizeof(gds) / sizeof(gds[0]), price_greater);*/
 
-	// 使用lamber表达式在这些地方更方便一些
+	// 使用lamber表达式在这些地方更方便
 	sort(gds, gds + sizeof(gds) / sizeof(gds[0]), [](const Goods& g1, const Goods& g2) {return g1._price > g2._price; });
 	sort(gds, gds + sizeof(gds) / sizeof(gds[0]), [](const Goods& g1, const Goods& g2) {return g1._price < g2._price; });
 
@@ -788,8 +788,6 @@ pthread_create(...)
 
 //int x = 0;
 //atomic<int> x = 0; // 支持整形/浮点的原子++、--
-//// 扩展学习：atomic支持CAS->无锁编程，一会我给大家发一篇文章链接，有兴趣的同学可以下去看看。
-//// 两个线程去一起对x加n次
 //
 //void Add(int n)
 //{
@@ -889,7 +887,7 @@ int main()
 	}, n));
 	}*/
 
-	// 注意的是thread支持移动赋值和移动拷贝，不支持深拷贝的拷贝构造和拷贝赋值
+	// thread支持移动赋值和移动拷贝，不支持深拷贝的拷贝构造和拷贝赋值
 	vector<thread> vthreads(m);
 	for (int i = 0; i < m; ++i)
 	{
@@ -920,7 +918,7 @@ int main()
 	return 0;
 }
 
-// 扩展作业线程池
+
 struct tack
 {
 	template<class Fn>
