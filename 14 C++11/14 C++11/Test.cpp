@@ -919,24 +919,3 @@ int main()
 }
 
 
-struct tack
-{
-	template<class Fn>
-	tack(Fn)
-	{}
-};
-
-
-class thread_pool
-{
-public:
-	thread_pool(int n = 8)
-		:vthreads(n)
-	{}
-
-private:
-	vector<thread> vthreads;
-	//queue<task> _q;
-};
-
-
