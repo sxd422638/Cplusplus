@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+#include<thread>
 
 #include"SmartPtr.h"
 
@@ -83,7 +84,6 @@ int x1()
 
 // shared_ptr的拷贝赋值时线程安全问题
 // shared_ptr是否是线程安全的 -》 注意这里问题的shared_ptr对象拷贝和析构++/--引用计数是否是安全的，库的实现中是安全的。
-#include<thread>
 
 int x2()
 {
