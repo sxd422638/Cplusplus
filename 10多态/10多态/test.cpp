@@ -467,8 +467,8 @@ typedef void(*V_FUNC)();
 //int main()
 //{
 //	INT i;
-//	//void(*p)();  // 函数指针定义很怪，不好理解
-//	V_FUNC p;      // 这一句代码会被编译器变成上面的代码
+//	//void(*p)();  
+//	V_FUNC p;      
 //	p = func; // 定义个函数指针 指向func
 //	p();
 //	(*p)();
@@ -573,7 +573,7 @@ private:
 	int d1;
 };
 
-// 函数指针写起来很别扭，所以我们函数指针的类型通常都typedef
+// 函数指针的类型通常都typedef
 typedef void(*VF_PTR)();
 //int* a[10]
 //VF_PTR table[10]
@@ -699,10 +699,6 @@ public:
 	virtual void func1(int val) { std::cout << "B->" << val << std::endl; }
 };
 
-// 技术探索两种方式
-// 1、正向型  遇到技术问题，查官方文档或者权威的书籍
-// 2、逆向型  遇到技术问题，看汇编或源代码等底层实现
-
 
 //
 //int main(int argc, char* argv[])
@@ -725,7 +721,7 @@ public:
 //	return 0;
 //}
 
-// 实现多态为什么只能是指针或者引用调用呢？
+
 void f1(A* ptr)
 {
 	ptr->func1();
