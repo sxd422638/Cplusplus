@@ -672,7 +672,7 @@ void test_string1()
 	// 遍历+读写  范围for是有迭代器支持的，这里会被编译器转换成迭代器遍历 
 	for (auto& ch : s1) //范围for是需要支持迭代器的条件才可以使用
 	{
-		ch += 1; // 可以把ch理解为*it1 这样就可以理解为
+		ch += 1; // 可以把ch理解为*it1
 		cout << ch << " ";
 	}
 	cout << endl;
